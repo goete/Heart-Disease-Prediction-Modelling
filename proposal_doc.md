@@ -1,9 +1,9 @@
 Title
 
 # Introduction:
-* Provide some relevant background information on the topic so that someone unfamiliar with it will be prepared to understand the rest of your proposal
-* Clearly state the question you will try to answer with your project
-* Identify and describe the dataset that will be used to answer the question
+Our topic revolves around heart disease, specifically attempting to build a model that will predict, given certain factors that will be explained shortly, if a person does have heart disease. We chose to examine biological information of heart-disease patients at the Cleveland Clinic Foundation. This dataset contains 303 observations with 14 variables each; 164 of the patients have no heart disease whereas 139 have at least one heart disease. By looking at the CDC’s information on heart disease<sup>1<sup>  and cross-referencing with this dataset, we picked out the 8 variables that seemed most relevant and crucial to determining our goal. These variables are as follows: age, sex, chest pain type, resting blood pressure, cholesterol level, fasting blood sugar, maximum heart achieved and presence of exercise-induced angina. As such, the overarching question that we seek to answer is: Given the stated variables, does that person have heart disease?
+
+<sup>1<sup> https://www.cdc.gov/heartdisease/risk_factors.htm
 
 # Preliminary exploratory data analysis:
 * Demonstrate that the dataset can be read from the web into R 
