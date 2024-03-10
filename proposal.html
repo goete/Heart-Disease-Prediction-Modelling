@@ -7548,7 +7548,7 @@ a.anchor-link {
 <span class="ansi-red-fg">✖</span> <span class="ansi-blue-fg">dplyr</span>::<span class="ansi-green-fg">lag()</span>      masks <span class="ansi-blue-fg">stats</span>::lag()
 <span class="ansi-red-fg">✖</span> <span class="ansi-blue-fg">yardstick</span>::<span class="ansi-green-fg">spec()</span> masks <span class="ansi-blue-fg">readr</span>::spec()
 <span class="ansi-red-fg">✖</span> <span class="ansi-blue-fg">recipes</span>::<span class="ansi-green-fg">step()</span>   masks <span class="ansi-blue-fg">stats</span>::step()
-<span class="ansi-blue-fg">•</span> Learn how to get started at <span class="ansi-green-fg">https://www.tidymodels.org/start/</span>
+<span class="ansi-blue-fg">•</span> Search for functions across packages at <span class="ansi-green-fg">https://www.tidymodels.org/find/</span>
 
 
 Attaching package: ‘gridExtra’
@@ -7778,8 +7778,8 @@ $ diagnosis      <span class="ansi-black-intense-fg">&lt;fct&gt;</span> Angiogra
 <span class="n">number_of_observations</span>
 <span class="n">genders</span>
 <span class="n">mean_values</span>
-<span class="n">missing_data</span>
 <span class="n">number_of_missing_data</span>
+<span class="n">missing_data</span>
 </pre></div>
 </div>
 </div>
@@ -7840,13 +7840,13 @@ $ diagnosis      <span class="ansi-black-intense-fg">&lt;fct&gt;</span> Angiogra
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
 <table class="dataframe">
-<caption>A tibble: 1 × 6</caption>
+<caption>A tibble: 1 × 1</caption>
 <thead>
-<tr><th scope="col">age</th><th scope="col">sex</th><th scope="col">max_heart_rate</th><th scope="col">st_depression</th><th scope="col">thal</th><th scope="col">diagnosis</th></tr>
-<tr><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;fct&gt;</th></tr>
+<tr><th scope="col">number_of_missing_values</th></tr>
+<tr><th scope="col">&lt;int&gt;</th></tr>
 </thead>
 <tbody>
-<tr><td>53</td><td>Female</td><td>115</td><td>0</td><td>?</td><td>Healthy</td></tr>
+<tr><td>1</td></tr>
 </tbody>
 </table>
 </div>
@@ -7855,13 +7855,13 @@ $ diagnosis      <span class="ansi-black-intense-fg">&lt;fct&gt;</span> Angiogra
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
 <table class="dataframe">
-<caption>A tibble: 1 × 1</caption>
+<caption>A tibble: 1 × 6</caption>
 <thead>
-<tr><th scope="col">number_of_missing_values</th></tr>
-<tr><th scope="col">&lt;int&gt;</th></tr>
+<tr><th scope="col">age</th><th scope="col">sex</th><th scope="col">max_heart_rate</th><th scope="col">st_depression</th><th scope="col">thal</th><th scope="col">diagnosis</th></tr>
+<tr><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;fct&gt;</th></tr>
 </thead>
 <tbody>
-<tr><td>1</td></tr>
+<tr><td>53</td><td>Female</td><td>115</td><td>0</td><td>?</td><td>Healthy</td></tr>
 </tbody>
 </table>
 </div>
@@ -7875,7 +7875,7 @@ $ diagnosis      <span class="ansi-black-intense-fg">&lt;fct&gt;</span> Angiogra
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>So we see that, luckily, only 1 row has missing data. To make it more useful, we will rename the "?" to N/A in the code below. Additionally, the classes appear to be roughly balanced, with around the same number of positive diagnoses as negative (healthy).</p>
+<p>So we see that, luckily, only 1 row has missing data. To make it more useful, we will rename the "?" to N/A in the code below. Additionally, we see that the classes appear to be roughly balanced, with around the same number of positive diagnoses as negative (healthy).</p>
 </div>
 </div>
 </div>
@@ -7889,10 +7889,8 @@ $ diagnosis      <span class="ansi-black-intense-fg">&lt;fct&gt;</span> Angiogra
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="n">data_converted</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">mutate</span><span class="p">(</span><span class="n">data_converted</span><span class="p">,</span><span class="w"> </span><span class="n">thal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">if_else</span><span class="p">(</span><span class="n">thal</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"?"</span><span class="p">,</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="n">thal</span><span class="p">))</span>
 
-<span class="n">data_missing</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">filter</span><span class="p">(</span><span class="n">data_converted</span><span class="p">,</span><span class="w"> </span><span class="nf">if_any</span><span class="p">(</span><span class="nf">everything</span><span class="p">(),</span><span class="w"> </span><span class="n">is.na</span><span class="p">))</span>
+<span class="n">data_missing</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">filter</span><span class="p">(</span><span class="n">data_converted</span><span class="p">,</span><span class="w"> </span><span class="nf">if_any</span><span class="p">(</span><span class="nf">everything</span><span class="p">(),</span><span class="w"> </span><span class="n">is.na</span><span class="p">))</span><span class="w"> </span><span class="c1"># check that the above code worked</span>
 <span class="n">data_missing</span>
-
-<span class="nf">glimpse</span><span class="p">(</span><span class="n">data_converted</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -7915,20 +7913,6 @@ $ diagnosis      <span class="ansi-black-intense-fg">&lt;fct&gt;</span> Angiogra
 <tr><td>53</td><td>Female</td><td>115</td><td>0</td><td>NA</td><td>Healthy</td></tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Rows: 227
-Columns: 6
-$ age            <span class="ansi-black-intense-fg">&lt;dbl&gt;</span> 58, 52, 63, 57, 71, 57, 55, 57, 52, 62, 49, 58, 59, 35,…
-$ sex            <span class="ansi-black-intense-fg">&lt;fct&gt;</span> Male, Male, Male, Male, Female, Male, Male, Male, Male,…
-$ max_heart_rate <span class="ansi-black-intense-fg">&lt;dbl&gt;</span> 131, 169, 144, 126, 125, 143, 111, 115, 158, 99, 162, 1…
-$ st_depression  <span class="ansi-black-intense-fg">&lt;dbl&gt;</span> 2.2, 0.0, 4.0, 1.5, 1.6, 3.0, 5.6, 1.2, 0.8, 1.8, 0.0, …
-$ thal           <span class="ansi-black-intense-fg">&lt;fct&gt;</span> Reversable defect, Normal, Reversable defect, Fixed def…
-$ diagnosis      <span class="ansi-black-intense-fg">&lt;fct&gt;</span> Angiographic disease, Healthy, Angiographic disease, He…
-</pre>
 </div>
 </div>
 </div>
@@ -8025,7 +8009,7 @@ $ diagnosis      <span class="ansi-black-intense-fg">&lt;fct&gt;</span> Angiogra
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Methods:">Methods:<a class="anchor-link" href="#Methods:">¶</a></h1><p>In the preliminary analysis above, we found that the explanatory variables that have an association with our class variable (diagnosis) are the following 4 out of 14:</p>
+<h1 id="Methods">Methods<a class="anchor-link" href="#Methods">¶</a></h1><p>In the preliminary analysis above, we found that the explanatory variables that have an association with our class variable (diagnosis) are the following 4 out of 14:</p>
 <ul>
 <li>Maximum heart rate achieved by the patient (bpm)</li>
 <li>Age of patient</li>
@@ -8034,7 +8018,7 @@ $ diagnosis      <span class="ansi-black-intense-fg">&lt;fct&gt;</span> Angiogra
 </ul>
 <p>We plan to input these 4 variables into a K-Nearest Neighbor classification model, where we can teach R to predict whether or not a patient has heart disease. The remaining 10 variables were excluded since they appeared to have no association with our class variable. The exclusion of these variables ensures that our classification is not influenced by unrelated variables. We will conduct cross-validation to pick our optimal number of neighbors <code>K</code>. Our parameter <code>K</code> will determine how many neighbors will be used to classify our new observation, this ensures that our model has optimal accuracy and reduced error in our class prediction.</p>
 <p>To visualize our decision of choosing an optimal <code>K</code>, we will create a line plot that shows the relationship between our parameter <code>K</code> (within a reasonable range) and the accuracy of our classification model. This allows us to visualize the parameter <code>K</code> with the optimal accuracy. To evaluate our classifier, we will also visualize the confusion matrix with a bar plot.</p>
-<h1 id="Expected-outcomes-and-significance:">Expected outcomes and significance:<a class="anchor-link" href="#Expected-outcomes-and-significance:">¶</a></h1><p>We expect to build a classification model that allows us to diagnose heart disease within a patient using 4 given variables. Given its medical implications, it could lead to research and introduction of more robust predictive models that help diagnose existence of diseases within patients. This allows doctors to identify medical problems within patients that could be alleviated before it causes greater damage. This could lead to future questions such as "What other diseases or medical problems could be diagnosed via a classification/predictive model?"</p>
+<h1 id="Expected-outcomes-and-significance">Expected outcomes and significance<a class="anchor-link" href="#Expected-outcomes-and-significance">¶</a></h1><p>We expect to build a classification model that allows us to diagnose heart disease within a patient using 4 given variables. Given its medical implications, it could lead to research and introduction of more robust predictive models that help diagnose existence of diseases within patients. This allows doctors to identify medical problems within patients that could be alleviated before it causes greater damage. This could lead to future questions such as "What other diseases or medical problems could be diagnosed via a classification/predictive model?"</p>
 </div>
 </div>
 </div>
